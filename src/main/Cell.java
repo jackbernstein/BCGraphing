@@ -1,8 +1,6 @@
 package main;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,6 +41,7 @@ public class Cell {
 			for(Cell ce : c.connections) {
 				connections.add(ce);
 			}
+
 		}
 		for(String s : res) {
 			System.out.println(s);

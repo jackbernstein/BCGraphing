@@ -17,6 +17,8 @@ public class Graph {
 	static List<Cell> l4 = new ArrayList<Cell>();
 	static List<Cell> l5 = new ArrayList<Cell>();
 	
+	static Cell temp = null;
+	
 	public static void main(String[] args) throws IOException {
 		list.add(l1);
 		list.add(l2);
@@ -41,50 +43,59 @@ public class Graph {
 		    	else {
 		    		int level = Character.getNumericValue(obj.charAt(1));
 		    		String name = obj.substring(3, obj.length());
-		    		Cell temp = new Cell(name, level);
-		    		switch (level) {
-		    		case 1:
-		    			if(!l1.contains(temp))
-		    				l1.add(temp);
-		    			else {
-		    				int index = l1.indexOf(temp);
-		    				temp = l1.get(index);
+		    		boolean exists = false;
+		    		for(Cell c : list.get(level - 1)) {
+		    			if(c.name.equals(name)) {
+		    				exists = true;
+		    				temp = c;
 		    			}
-		    			break;
-		    		case 2:
-		    			if(!l2.contains(temp))
-		    				l2.add(temp);
-		    			else {
-		    				int index = l2.indexOf(temp);
-		    				temp = l2.get(index);
-		    			}
-		    			break;
-		    		case 3:
-		    			if(!l3.contains(temp)) {
-		    				l3.add(temp);
-		    			} else {
-		    				int index = l3.indexOf(temp);
-		    				temp = l3.get(index);
-		    			}
-		    			break;
-		    		case 4:
-		    			if(!l4.contains(temp))
-		    				l4.add(temp);
-		    			else {
-		    				int index = l4.indexOf(temp);
-		    				temp = l4.get(index);
-		    			}
-		    			break;
-		    		case 5:
-		    			if(!l5.contains(temp))
-		    				l5.add(temp);
-		    			else {
-		    				int index = l5.indexOf(temp);
-		    				temp = l5.get(index);
-		    			}
-		    			break;
-		    		default:
-		    			break;
+		    		}
+		    		if(!exists) {
+		    			temp = new Cell(name, level);
+			    		switch (level) {
+			    		case 1:
+			    			if(!l1.contains(temp))
+			    				l1.add(temp);
+			    			else {
+			    				int index = l1.indexOf(temp);
+			    				temp = l1.get(index);
+			    			}
+			    			break;
+			    		case 2:
+			    			if(!l2.contains(temp))
+			    				l2.add(temp);
+			    			else {
+			    				int index = l2.indexOf(temp);
+			    				temp = l2.get(index);
+			    			}
+			    			break;
+			    		case 3:
+			    			if(!l3.contains(temp)) {
+			    				l3.add(temp);
+			    			} else {
+			    				int index = l3.indexOf(temp);
+			    				temp = l3.get(index);
+			    			}
+			    			break;
+			    		case 4:
+			    			if(!l4.contains(temp))
+			    				l4.add(temp);
+			    			else {
+			    				int index = l4.indexOf(temp);
+			    				temp = l4.get(index);
+			    			}
+			    			break;
+			    		case 5:
+			    			if(!l5.contains(temp))
+			    				l5.add(temp);
+			    			else {
+			    				int index = l5.indexOf(temp);
+			    				temp = l5.get(index);
+			    			}
+			    			break;
+			    		default:
+			    			break;
+			    		} 
 		    		} 
 		    		if(i == 0)
 			    		first = temp;
