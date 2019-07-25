@@ -1,17 +1,20 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Cell {
 	
 	String name;
 	int level;
-	List<Cell> connections;
+	LinkedList<Cell> connections;
 	
 	public Cell(String name, int level) {
 		super();
-		connections = new ArrayList();
+		connections = new LinkedList<Cell>();
 		this.name = name;
 		this.level = level;
 	}
@@ -33,9 +36,16 @@ public class Cell {
 	}
 	
 	public void printConnecs() {
-		for(Cell conn : this.connections) {
-			System.out.println(conn.getName());
-			conn.printConnecs();
+		HashSet<String> res = new HashSet<String>();
+		while(!connections.isEmpty()) {
+			Cell c = connections.pop();
+			res.add(c.getName());
+			for(Cell ce : c.connections) {
+				connections.add(ce);
+			}
+		}
+		for(String s : res) {
+			System.out.println(s);
 		}
 	}
 	
