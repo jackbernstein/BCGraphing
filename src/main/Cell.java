@@ -9,10 +9,12 @@ public class Cell {
 	private String name;
 	private int level;
 	private LinkedList<Cell> connections;
+	private LinkedList<Cell> uses;
 	
 	public Cell(String name, int level) {
 		super();
 		connections = new LinkedList<Cell>();
+		uses = new LinkedList<Cell>();
 		this.name = name;
 		this.level = level;
 	}
@@ -52,6 +54,30 @@ public class Cell {
 	@Override
 	public boolean equals(Object c) {
 		return (name.equals(((Cell) c).name) && level == ((Cell) c).level);
+	}
+	
+	public List<Cell> getUses() {
+		return uses;
+	}
+	
+	public void addUse(Cell c) {
+		uses.add(c);
+	}
+	
+	public void printUses() {
+		HashSet<String> res = new HashSet<String>();
+		while(!uses.isEmpty()) {
+			Cell c = uses.pop();
+			res.add(c.getName());
+			for(Cell ce : c.uses) {
+				uses.add(ce);
+			}
+
+		}
+		
+		for(String s : res) {
+			System.out.println(s);
+		}
 	}
 
 }
