@@ -45,7 +45,7 @@ public class Graph {
 		    		String name = obj.substring(3, obj.length());
 		    		boolean exists = false;
 		    		for(Cell c : list.get(level - 1)) {
-		    			if(c.name.equals(name)) {
+		    			if(c.getName().equals(name)) {
 		    				exists = true;
 		    				temp = c;
 		    			}

@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Cell {
 	
-	String name;
-	int level;
-	LinkedList<Cell> connections;
+	private String name;
+	private int level;
+	private LinkedList<Cell> connections;
 	
 	public Cell(String name, int level) {
 		super();
@@ -43,6 +43,7 @@ public class Cell {
 			}
 
 		}
+		
 		for(String s : res) {
 			System.out.println(s);
 		}
